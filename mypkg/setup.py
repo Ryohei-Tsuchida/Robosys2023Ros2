@@ -22,8 +22,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'talker = mypkg.talker:main',
-            'listener = mypkg.listener:main',
+            'GamePublisherNode = mypkg.game_publisher_node:main',
+            'GameSubscriberNode = mypkg.game_subscriber_node:main',
         ],
     },
 )
