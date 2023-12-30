@@ -64,7 +64,7 @@ $ ros2 launch mypkg talk_listen.launch.py
                          .
                          .
 ```
-## randam_number.pyとprime_ans.py
+### randam_number.pyとprime_ans.py
 * `ros2 run`実行方法
 ```bash
 端末1$ ros2 run mypkg prime_ans
