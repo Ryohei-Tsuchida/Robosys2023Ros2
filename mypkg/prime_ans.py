@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText:2023 Ryohei Tsuchida
+# SPDX-License-Identifier:BSD-3-Clau
+
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int32MultiArray

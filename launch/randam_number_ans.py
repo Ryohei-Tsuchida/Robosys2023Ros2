@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText:2023 Ryohei Tsuchida
+# SPDX-License-Identifier:BSD-3-Clau
+
 import launch
 import launch.actions
 import launch.substitutions
