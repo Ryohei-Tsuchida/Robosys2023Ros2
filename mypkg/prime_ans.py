@@ -27,16 +27,23 @@ class RandomAnswerSubscriber(Node):
 
         elapsed_time = time() - self.start_time
         if elapsed_time < 30:
-            print("Select a prime number from the following list:")
-            print(self.last_received_numbers)
+            self.get_logger().info("Select a prime number from the following list:")
+            self.get_logger().info(f"[{', '.join(map(str, self.last_received_numbers))}]")
+        else:
+            self.answered = True  # Set the flag to indicate that an answer has been provided
+            self.timer_callback()
 
     def timer_callback(self):
         if not self.answered and self.last_received_numbers is not None:
-            self.answered = True  # Set the flag to indicate that an answer has been provided
-            print("Time up!")
-            print("The answer is:")
+            self.get_logger().info("Time up! The answer is:")
             prime_numbers = [num for num in self.last_received_numbers if self.is_prime(num)]
-            print(prime_numbers)
+            if prime_numbers:
+                self.get_logger().info(str(prime_numbers))
+            else:
+                self.get_logger().info("No prime numbers selected.")
+
+            # Avoid recursive calls to timer_callback
+            self.timer_.cancel()
 
     def is_prime(self, num):
         if num < 2:
@@ -49,7 +56,14 @@ class RandomAnswerSubscriber(Node):
 def main(args=None):
     rclpy.init(args=args)
     random_ans_subscriber = RandomAnswerSubscriber()
-    rclpy.spin(random_ans_subscriber)
+
+    try:
+        executor = rclpy.executors.SingleThreadedExecutor()
+        executor.add_node(random_ans_subscriber)
+        rclpy.spin(random_ans_subscriber, executor=executor)
+    except KeyboardInterrupt:
+        pass
+
     random_ans_subscriber.destroy_node()
     rclpy.shutdown()
 

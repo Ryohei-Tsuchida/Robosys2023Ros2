@@ -28,7 +28,7 @@ setup(
             'tic_tac_toe_publisher = mypkg.tic_tac_toe_publisher:main',
             'tic_tac_toe_subscriber = mypkg.tic_tac_toe_subscriber:main',
             'randam_number = mypkg.randam_number:main',
-            'randam_ans = mypkg.randam_ans:main',
+            'prime_ans = mypkg.prime_ans:main',
         ],
     },
 )

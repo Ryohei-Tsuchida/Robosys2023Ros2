@@ -4,9 +4,9 @@ import launch.substitutions
 import launch_ros.actions
 
 def generate_launch_description():
-    randam_ans = launch_ros.actions.Node(
+    prime_ans = launch_ros.actions.Node(
         package='mypkg',
-        executable='randam_ans',
+        executable='prime_ans',
         output='screen'
     )
 
@@ -15,5 +15,5 @@ def generate_launch_description():
         executable='randam_number',
         output='screen'
     )
-    return launch.LaunchDescription([randam_ans, randam_number])
+    return launch.LaunchDescription([prime_ans, randam_number])
 

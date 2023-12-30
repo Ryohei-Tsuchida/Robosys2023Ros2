@@ -8,4 +8,4 @@ colcon build
 source $dir/.bashrc
 timeout 40 ros2 launch mypkg randam_number_ans.py > /tmp/mypkg.log
 
-cat /tmp/mypkg.log | grep 'Time up!'
+cat /tmp/mypkg.log | grep 'Time up! The answer is:'
